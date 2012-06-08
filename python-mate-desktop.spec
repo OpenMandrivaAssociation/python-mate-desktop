@@ -1,17 +1,18 @@
-%define oname mate-python
+%define oname	python-mate
+%define oldname mate-python
 
 #no mate ports
 %define	build_brasero		0
 %define	build_atril		0
-%define	build_mateprint		0
-%define	build_matemediaprofiles	0
+%define	build_print		0
+%define	build_mediaprofiles	0
 
 Summary:	MATE Desktop bindings for Python
 Name:		python-mate-desktop
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPLv2+ and GPLv2+
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/1.2/%{name}-%{version}.tar.xz
 
@@ -45,9 +46,10 @@ MATE Desktop modules.
 
 %package -n %{oname}-applet 	 
 Summary:	Python bindings for MATE Panel applets
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	mate-panel
 Requires:	python-mate
+Obsoletes:	%{oldname}-applet
 
 %description -n %{oname}-applet
 This module contains a wrapper that allows MATE Panel applets to be
@@ -56,7 +58,7 @@ written in Python.
 %if %{build_atril}
 %package -n %{oname}-atril
 Summary:	Python bindings for the Atril document viewer
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	atril
 
 %description -n %{oname}-atril
@@ -67,7 +69,7 @@ available from Python.
 %if %{build_brasero}
 %package -n %{oname}-brasero
 Summary:	Python bindings for Brasero
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	brasero
 BuildRequires:	brasero-devel
 
@@ -77,45 +79,48 @@ This module contains a wrapper that makes Brasero available from Python.
 
 %package -n %{oname}-gtksourceview
 Summary:	Python bindings for Gtksourceview
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	gtksourceview1
-Requires:	%{oname}-mateprint = %{version}
+Requires:	%{oname}-print = %{version}
 
 %description -n %{oname}-gtksourceview
 This module contains a wrapper that makes Gtksourceview available from Python.
 
 %package -n %{oname}-gtop
 Summary:	Python bindings for Gtop
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	libgtop2
+Obsoletes:	%{oldname}-gtop
 
 %description -n %{oname}-gtop
 This module contains a wrapper that makes Gtop available from Python.
 
 %package -n %{oname}-marco
 Summary:	Python bindings for the Marco window manager
-Group:		Development/GNOME and GTK+
-Requires:	mate-window-manager 
+Group:		Graphical desktop/GNOME
 #marco isnt a provide yet
+Requires:	mate-window-manager 
+Obsoletes:	%{oldname}-marco
 
 %description -n %{oname}-marco
 This module contains a wrapper that makes the Marco window manager library
 available from Python.
 
-%package -n %{oname}-matekeyring
-Summary:	Python bindings for Gnome-keyring
-Group:		Development/GNOME and GTK+
+%package -n %{oname}-keyring
+Summary:	Python bindings for mate-keyring
+Group:		Graphical desktop/GNOME
 Requires:	mate-keyring
+Obsoletes:	%{oldname}-matekeyring
 
-%description -n %{oname}-matekeyring
-This module contains a wrapper that makes Gnome-keyring available from Python.
+%description -n %{oname}-keyring
+This module contains a wrapper that makes mate-keyring available from Python.
 
-%if %{build_matemediaprofiles}
+%if %{build_mediaprofiles}
 %package -n %{oname}-mediaprofiles
 Summary:	Python bindings for the MATE media profiles
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	mate-media
-Requires:	mate-python-mateconf >= %gnomepython
+Requires:	python-mateconf
 BuildRequires:	pkgconfig(mate-media-profiles)
 
 %description -n %{oname}-mediaprofiles
@@ -123,30 +128,32 @@ This module contains a wrapper that makes the MATE media profiles library
 available from Python.
 %endif
 
-%if %{build_mateprint}
-%package -n %{oname}-mateprint
+%if %{build_print}
+%package -n %{oname}-print
 Summary:	Python bindings for interacting with mateprint and mateprintui
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	libmateprintui
-Requires:	mate-python-canvas
+Requires:	python-matecanvas
 BuildRequires:	libmateprintui-devel >= 2.8.0
 
-%description -n %{oname}-mateprint
+%description -n %{oname}-print
 This module contains a wrapper that allows the use of mateprint and
 mateprintui via python.
 %endif
 
 %package -n %{oname}-rsvg
 Summary:	Python bindings for Rsvg
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	librsvg2
+Obsoletes:	%{oldname}-rsvg
 
 %description -n %{oname}-rsvg
 This module contains a wrapper that makes Rsvg available from Python.
 
 %package -n %{oname}-totem
 Summary:	Python bindings for the Totem playlist parser
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
+Obsoletes:	%{oldname}-totem
 
 %description -n %{oname}-totem
 This module contains a wrapper that makes the Totem playlist parser
@@ -154,8 +161,9 @@ available from Python.
 
 %package -n %{oname}-wnck
 Summary:	Python-wnck bindings
-Group:		Development/GNOME and GTK+
+Group:		Graphical desktop/GNOME
 Requires:	libwnck
+Obsoletes:	%{oldname}-wnck
 
 %description -n %{oname}-wnck
 This package contains a module that allows communication with the Window
@@ -218,18 +226,18 @@ find %{buildroot} -name '*.la' -exec rm {} \;
 %doc examples/braseromedia
 %endif
 
-%files -n %{oname}-matekeyring
+%files -n %{oname}-keyring
 %doc examples/keyring*
 %{py_platsitedir}/gtk-2.0/matekeyring.so
 
-%if %{build_mateprint}
-%files -n %{oname}-mateprint
+%if %{build_print}
+%files -n %{oname}-print
 %doc examples/mateprint/
 %{py_platsitedir}/gtk-2.0/mateprint/
 %{_datadir}/gtk-doc/html/pymateprint*
 %endif
 
-%if %{build_matemediaprofiles}
+%if %{build_mediaprofiles}
 %files -n %{oname}-mediaprofiles
 %doc examples/mediaprofiles
 %{py_platsitedir}/gtk-2.0/mediaprofiles.so
