@@ -258,7 +258,7 @@ find %{buildroot} -name '*.la' -exec rm {} \;
 %{py_platsitedir}/gtk-2.0/wnck.so
 
 %files devel
-%{_libdir}/pkgconfig/%{oname}-desktop-2.0.pc
+%{_libdir}/pkgconfig/mate-python-desktop-2.0.pc
 %dir %{_datadir}/pygtk/2.0/defs
 %{_datadir}/pygtk/2.0/defs/_matedesktop.defs
 %{_datadir}/pygtk/2.0/defs/applet.defs
