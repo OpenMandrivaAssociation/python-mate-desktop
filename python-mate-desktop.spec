@@ -1,20 +1,19 @@
 %define oname	python-mate
-%define oldname mate-python
 
 #no mate ports
 %define	build_brasero		0
-%define	build_atril		0
+%define	build_atril		1
 %define	build_print		0
 %define	build_mediaprofiles	0
 
 Summary:	MATE Desktop bindings for Python
 Name:		python-mate-desktop
-Version:	1.2.0
-Release:	2
+Version:	1.4.0
+Release:	1
 License:	LGPLv2+ and GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/1.2/%{name}-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/1.4/%{name}-%{version}.tar.xz
 
 BuildRequires:	mate-common
 BuildRequires:	mate-conf
@@ -26,6 +25,7 @@ BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(libmarco-private)
 BuildRequires:	pkgconfig(libmateui-2.0)
 BuildRequires:	pkgconfig(libmatepanelapplet-3.0)
+BuildRequires:	pkgconfig(libmatewnck)
 BuildRequires:	pkgconfig(librsvg-2.0)
 BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
@@ -49,7 +49,6 @@ Summary:	Python bindings for MATE Panel applets
 Group:		Graphical desktop/GNOME
 Requires:	mate-panel
 Requires:	python-mate
-Obsoletes:	%{oldname}-applet
 
 %description -n %{oname}-applet
 This module contains a wrapper that allows MATE Panel applets to be
@@ -90,7 +89,6 @@ This module contains a wrapper that makes Gtksourceview available from Python.
 Summary:	Python bindings for Gtop
 Group:		Graphical desktop/GNOME
 Requires:	libgtop2
-Obsoletes:	%{oldname}-gtop
 
 %description -n %{oname}-gtop
 This module contains a wrapper that makes Gtop available from Python.
@@ -100,7 +98,6 @@ Summary:	Python bindings for the Marco window manager
 Group:		Graphical desktop/GNOME
 #marco isnt a provide yet
 Requires:	mate-window-manager 
-Obsoletes:	%{oldname}-marco
 
 %description -n %{oname}-marco
 This module contains a wrapper that makes the Marco window manager library
@@ -110,7 +107,6 @@ available from Python.
 Summary:	Python bindings for mate-keyring
 Group:		Graphical desktop/GNOME
 Requires:	mate-keyring
-Obsoletes:	%{oldname}-matekeyring
 
 %description -n %{oname}-keyring
 This module contains a wrapper that makes mate-keyring available from Python.
@@ -145,7 +141,6 @@ mateprintui via python.
 Summary:	Python bindings for Rsvg
 Group:		Graphical desktop/GNOME
 Requires:	librsvg2
-Obsoletes:	%{oldname}-rsvg
 
 %description -n %{oname}-rsvg
 This module contains a wrapper that makes Rsvg available from Python.
@@ -153,7 +148,6 @@ This module contains a wrapper that makes Rsvg available from Python.
 %package -n %{oname}-totem
 Summary:	Python bindings for the Totem playlist parser
 Group:		Graphical desktop/GNOME
-Obsoletes:	%{oldname}-totem
 
 %description -n %{oname}-totem
 This module contains a wrapper that makes the Totem playlist parser
@@ -163,7 +157,6 @@ available from Python.
 Summary:	Python-wnck bindings
 Group:		Graphical desktop/GNOME
 Requires:	libwnck
-Obsoletes:	%{oldname}-wnck
 
 %description -n %{oname}-wnck
 This package contains a module that allows communication with the Window
@@ -255,7 +248,7 @@ find %{buildroot} -name '*.la' -exec rm {} \;
 
 %files -n %{oname}-wnck
 %doc examples/wnck*
-%{py_platsitedir}/gtk-2.0/wnck.so
+%{py_platsitedir}/gtk-2.0/matewnck.so
 
 %files devel
 %{_libdir}/pkgconfig/mate-python-desktop-2.0.pc
@@ -268,6 +261,17 @@ find %{buildroot} -name '*.la' -exec rm {} \;
 %{_datadir}/pygtk/2.0/defs/marco.defs
 #{_datadir}/pygtk/2.0/defs/print.defs
 #{_datadir}/pygtk/2.0/defs/printui.defs
-#{_datadir}/pygtk/2.0/defs/atril.defs
-%{_datadir}/pygtk/2.0/defs/wnck.defs
+%{_datadir}/pygtk/2.0/defs/atril.defs
+%{_datadir}/pygtk/2.0/defs/matewnck.defs
+
+
+
+%changelog
+* Fri Jun 08 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-2
++ Revision: 803295
+- rebuild properly renaming and obsoleting sub pkgs
+
+* Thu Jun 07 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-1
++ Revision: 803185
+- imported package python-mate-desktop
 
