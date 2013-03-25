@@ -9,11 +9,12 @@
 Summary:	MATE Desktop bindings for Python
 Name:		python-mate-desktop
 Version:	1.4.0
-Release:	1
+Release:	2
 License:	LGPLv2+ and GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/1.4/%{name}-%{version}.tar.xz
+Patch0:		python-mate-desktop-1.4.0-automake-1.13-fix.patch
 
 BuildRequires:	mate-common
 BuildRequires:	mate-conf

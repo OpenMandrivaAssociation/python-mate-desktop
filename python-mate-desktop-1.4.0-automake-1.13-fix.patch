@@ -1,0 +1,11 @@
+--- python-mate-desktop-1.4.0/configure.ac~	2012-07-11 19:05:07.000000000 +0200
++++ python-mate-desktop-1.4.0/configure.ac	2013-03-25 19:29:55.534457465 +0100
+@@ -33,7 +33,7 @@ m4_define(totem_required_version,
+ AC_INIT(mate-python-desktop, mate_python_desktop_version,
+         [http://www.mate-desktop.org/])
+ dnl AC_CONFIG_SRCDIR([mate/uimodule.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADER(config.h)
+ 
+ AM_INIT_AUTOMAKE
+ 
