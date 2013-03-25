@@ -174,9 +174,9 @@ This package contains pkgconfig file for %{name}.
 %prep
 %setup -q
 %apply_patches
+NOCONFIGURE=1 ./autogen.sh
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure2_5x \
 	--enable-marco \
 	--disable-gtksourceview
