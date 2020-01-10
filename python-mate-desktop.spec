@@ -173,7 +173,7 @@ This package contains pkgconfig file for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 NOCONFIGURE=1 ./autogen.sh
 
 %build
